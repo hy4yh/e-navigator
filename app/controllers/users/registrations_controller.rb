@@ -12,7 +12,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    Profile.create(user_id: current_user.id, name: "", b_y: 1988, b_m: 1, b_d: 1, gender: 0, school_name: "")
+    byebug
+    Profile.create(user_id: current_user.id, name: "", birthday: nil, gender: 0, school_name: "")
   end
 
   # GET /resource/edit

@@ -6,9 +6,7 @@
 
   <div class="field">
     <%= f.label :birthday, "生年月日" %>
-    <%= f.select :b_y, Birthday::BIRTHDAY_YEAR %>
-    <%= f.select :b_m, Birthday::BIRTHDAY_MONTH %>
-    <%= f.select :b_d, Birthday::BIRTHDAY_DAY %>
+    <%= f.date_select :birthday, user_month_numbers: true, start_year: 1988, end_year: 2000, include_blank: true %>
   </div>
 
   <div class="field">

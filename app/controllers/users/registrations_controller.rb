@@ -12,9 +12,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    byebug
-    Profile.create(user_id: current_user.id, name: "", birthday: nil, gender: 0, school_name: "")
+    create_profile
   end
+
+  private
+    def create_profile
+      Profile.create(user_id: current_user.id, name: "", birthday: nil, gender: 0, school_name: "")
+    end
 
   # GET /resource/edit
   # def edit

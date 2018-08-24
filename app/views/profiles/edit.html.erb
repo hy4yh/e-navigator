@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :gender, "性別" %>
-    <%= f.select :gender, Profile.genders.keys.to_a %>
+    <%= f.select :gender, Profile.genders_i18n.keys.map {|k| [Profile.genders_i18n[k], k]} %>
   </div>
 
   <div class="field">

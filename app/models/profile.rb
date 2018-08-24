@@ -1,4 +1,4 @@
 class Profile < ApplicationRecord
   belongs_to :user
-  enum gender: { "未選択": 0, "男性": 1, "女性": 2}
+  enum gender: { unselected: 0, man: 1, woman: 2 }
 end

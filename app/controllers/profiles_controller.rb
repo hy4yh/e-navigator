@@ -4,7 +4,6 @@ class ProfilesController < ApplicationController
       @profile = Profile.find_by(user_id: current_user.id)
       if request.patch?
         @profile.update(profile_params)
-        @profile = Profile.find_by(user_id: current_user.id)
       end
     else
       redirect_to :root

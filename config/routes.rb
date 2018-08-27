@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'interviews/index'
+
   root to: 'users#index'
   devise_for :users, :controllers => {
    :registrations => 'users/registrations'

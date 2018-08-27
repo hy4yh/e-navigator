@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  get 'interviews/index'
+  get 'users/:user_id/interviews', to: 'interviews#index', as: 'interviews'
+  get 'users/:user_id/interviews/new', to: 'interviews#new'
+  post 'users/:user_id/interviews/create', to: 'interviews#create'
 
   root to: 'users#index'
   devise_for :users, :controllers => {

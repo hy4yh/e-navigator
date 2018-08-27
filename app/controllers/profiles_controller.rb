@@ -25,10 +25,6 @@ class ProfilesController < ApplicationController
   end
 
   private
-    def current_user?
-      current_user.id == params[:user_id].to_i
-    end
-
     def profile_params
       params.require(:profile).permit(:name, :birthday, :gender, :school_name)
     end

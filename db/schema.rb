@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20180827090732) do
   create_table "interviews", force: :cascade do |t|
     t.bigint "user_id"
     t.datetime "interview_datetime"
-    t.integer "approval_status"
+    t.integer "approval_status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_interviews_on_user_id"

@@ -1,0 +1,25 @@
+<%= form_for @profile, :url => {:action => :edit} do |f| %>
+  <div class="field">
+    <%= f.label :name, "名前" %>
+    <%= f.text_field :name%>
+  </div>
+
+  <div class="field">
+    <%= f.label :birthday, "生年月日" %>
+    <%= f.date_select :birthday, user_month_numbers: true, start_year: 1988, end_year: 2000, include_blank: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :gender, "性別" %>
+    <%= f.select :gender, Profile.genders_i18n.keys.map {|k| [Profile.genders_i18n[k], k]} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :school_name, "学校名" %>
+    <%= f.text_field :school_name%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "登録" %>
+  </div>
+<% end %>

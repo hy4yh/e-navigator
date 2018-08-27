@@ -10,15 +10,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  def create
-    super
-    create_profile
-  end
-
-  private
-    def create_profile
-      Profile.create(user_id: current_user.id, name: "", birthday: nil, gender: 0, school_name: "")
-    end
+  # def create
+  #   super
+  # end
 
   # GET /resource/edit
   # def edit

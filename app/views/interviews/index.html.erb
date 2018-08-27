@@ -5,7 +5,7 @@
 　</tr>
   <% @interviews.each do |i| %>
   <tr align="left">
-    <td><%= i.interview_datetime %></td>
+    <td><%= i.interview_datetime.strftime("%Y年%m月%d日 %H時%M分") %></td>
     <td><%= Interview.approval_statuses_i18n[i.approval_status] %></td>
   </tr>
   <% end %>

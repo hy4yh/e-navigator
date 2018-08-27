@@ -1,5 +1,5 @@
 <div>
-  <p>面接開始時間:<%= @interview.interview_datetime %></p>
+  <p>面接開始時間:<%= @interview.interview_datetime.strftime("%Y年%m月%d日 %H時%M分") %></p>
   <p>承認状態:<%= Interview.approval_statuses_i18n[@interview.approval_status] %></p>
 </div>
 

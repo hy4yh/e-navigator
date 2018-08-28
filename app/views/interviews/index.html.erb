@@ -7,6 +7,8 @@
   <tr align="left">
     <td><%= l i.interview_datetime, format: :long %></td>
     <td><%= Interview.approval_statuses_i18n[i.approval_status] %></td>
+    <td><%= link_to '編集', edit_interview_path(i.user_id, i.id) %></td>
+    <td><%= link_to '削除', delete_interview_path(i.user_id, i.id), method: :delete,data: {confirm: '本当に削除しますか？' } %></td>
   </tr>
   <% end %>
 </table>

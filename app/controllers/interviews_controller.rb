@@ -23,6 +23,32 @@ class InterviewsController < ApplicationController
     end
   end
 
+  def edit
+    @interview = Interview.find(params[:interview_id])
+  end
+
+  def update
+    if current_user?
+      @interview = Interview.find(params[:interview_id])
+      if @interview.update(interview_param)
+        flash.now[:notice] = "面接を更新しました。"
+      else
+        render 'edit'
+      end
+    else
+      redirect_to :root
+    end
+  end
+
+  def destroy
+    if current_user?
+      interview = Interview.find(params[:interview_id])
+      interview.destroy
+      flash[:notice] = "面接を削除しました。"
+    end
+    redirect_to action: :index
+  end
+
   private
     def interview_param
       params.require(:interview).permit(:interview_datetime)

@@ -1,4 +1,5 @@
 class ProfilesController < ApplicationController
+  before_action :authenticate_user!
   def create
     if current_user?
       params[:profile][:user_id] = current_user.id

@@ -21,12 +21,12 @@ class InterviewsController < ApplicationController
   end
 
   def edit
-    @interview = Interview.find(params[:interview_id])
+    @interview = Interview.find(params[:id])
   end
 
   def update
     if current_user?
-      @interview = Interview.find(params[:interview_id])
+      @interview = Interview.find(params[:id])
       if @interview.update(interview_param)
         flash.now[:notice] = "面接を更新しました。"
       else
@@ -39,7 +39,7 @@ class InterviewsController < ApplicationController
 
   def destroy
     if current_user?
-      interview = Interview.find(params[:interview_id])
+      interview = Interview.find(params[:id])
       interview.destroy
       flash[:notice] = "面接を削除しました。"
     end

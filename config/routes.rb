@@ -9,5 +9,5 @@ Rails.application.routes.draw do
 
   get 'profiles/:user_id/edit', to: 'profiles#edit', as: 'edit_profiles'
   post 'profiles/:user_id/edit', to: 'profiles#create'
-  patch 'profiles/:user_id/edit', to: 'profiles#edit'
+  patch 'profiles/:user_id/edit', to: 'profiles#update'
 end

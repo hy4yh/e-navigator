@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root to: 'users#index'
 
-  resources :users, only: :index do
-    resources :interviews, except: :show
+  resources :users, only: [] do
+    resources :interviews
   end
 
   devise_for :users

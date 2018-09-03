@@ -1,7 +1,13 @@
 class InterviewsController < ApplicationController
   before_action :authenticate_user!
+  before_action :redirect_if_not_current_user, only: [:create, :update, :destroy]
+
   def index
     @interviews = current_user.interviews.order(:interview_datetime)
+  end
+
+  def show
+    @interview = Interview.find(params[:id])
   end
 
   def new
@@ -9,15 +15,12 @@ class InterviewsController < ApplicationController
   end
 
   def create
-    if current_user?
-      @interview = current_user.interviews.new(interview_param)
-      if @interview.save
-        flash.now[:notice] = "面接を作成しました。"
-      else
-        render 'new'
-      end
+    @interview = current_user.interviews.new(interview_param)
+    if @interview.save
+      flash[:notice] = "面接を作成しました。"
+      redirect_to action: :show, user_id: current_user.id, id: @interview.id
     else
-      redirect_to :root
+      render 'new'
     end
   end
 
@@ -26,29 +29,28 @@ class InterviewsController < ApplicationController
   end
 
   def update
-    if current_user?
-      @interview = Interview.find(params[:id])
-      if @interview.update(interview_param)
-        flash.now[:notice] = "面接を更新しました。"
-      else
-        render 'edit'
-      end
+    @interview = Interview.find(params[:id])
+    if @interview.update(interview_param)
+      flash[:notice] = "面接を更新しました。"
+      redirect_to action: :show, user_id: current_user.id, id: @interview.id
     else
-      redirect_to :root
+      render 'edit'
     end
   end
 
   def destroy
-    if current_user?
-      interview = Interview.find(params[:id])
-      interview.destroy
-      flash[:notice] = "面接を削除しました。"
-    end
+    interview = Interview.find(params[:id])
+    interview.destroy
+    flash[:notice] = "面接を削除しました。"
     redirect_to action: :index
   end
 
   private
     def interview_param
       params.require(:interview).permit(:interview_datetime)
+    end
+
+    def redirect_if_not_current_user
+      redirect_to action: :index, user_id: current_user.id unless current_user?
     end
 end

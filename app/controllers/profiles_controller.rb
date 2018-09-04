@@ -30,6 +30,6 @@ class ProfilesController < ApplicationController
     end
 
     def redirect_if_not_current_user
-      redirect_to :root unless current_user?
+      redirect_to root_path unless current_user?
     end
 end

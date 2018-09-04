@@ -17,8 +17,7 @@ class InterviewsController < ApplicationController
   def create
     @interview = current_user.interviews.new(interview_param)
     if @interview.save
-      flash[:notice] = "面接を作成しました。"
-      redirect_to action: :show, user_id: current_user.id, id: @interview.id
+      redirect_to user_interview_path(current_user, @interview), notice: "面接を作成しました。"
     else
       render 'new'
     end
@@ -31,8 +30,7 @@ class InterviewsController < ApplicationController
   def update
     @interview = Interview.find(params[:id])
     if @interview.update(interview_param)
-      flash[:notice] = "面接を更新しました。"
-      redirect_to action: :show, user_id: current_user.id, id: @interview.id
+      redirect_to user_interview_path(current_user, @interview), notice: "面接を更新しました。"
     else
       render 'edit'
     end
@@ -41,8 +39,7 @@ class InterviewsController < ApplicationController
   def destroy
     interview = Interview.find(params[:id])
     interview.destroy
-    flash[:notice] = "面接を削除しました。"
-    redirect_to action: :index
+    redirect_to user_interviews_path, notice: "面接を削除しました。"
   end
 
   private
@@ -51,6 +48,6 @@ class InterviewsController < ApplicationController
     end
 
     def redirect_if_not_current_user
-      redirect_to action: :index, user_id: current_user.id unless current_user?
+      redirect_to user_interviews_path(current_user) unless current_user?
     end
 end

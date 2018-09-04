@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
   before_action :redirect_if_not_current_user
+  before_action :set_profile, only: [:edit, :update]
 
   def create
     params[:profile][:user_id] = current_user.id
@@ -9,13 +10,12 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    unless @profile = Profile.find_by(user_id: current_user.id)
+    unless @profile
       @profile = Profile.new
     end
   end
 
   def update
-    @profile = Profile.find_by(user_id: current_user.id)
     @profile.update(profile_params)
     render :edit
   end
@@ -27,6 +27,10 @@ class ProfilesController < ApplicationController
 
     def create_profile
       params.require(:profile).permit(:user_id, :name, :birthday, :gender, :school_name)
+    end
+
+    def set_profile
+      @profile = Profile.find_by(user_id: current_user.id)
     end
 
     def redirect_if_not_current_user

@@ -4,7 +4,8 @@ class InterviewsController < ApplicationController
   before_action :set_interview, only: [:show, :edit, :update, :destroy]
 
   def index
-    @interviews = current_user.interviews.order(:interview_datetime)
+    user = User.find(params[:user_id])
+    @interviews = user.interviews.order(:interview_datetime)
   end
 
   def show

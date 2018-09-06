@@ -1,0 +1,17 @@
+<h1>新規面接作成</h1>
+<% if @interview.errors.any? %>
+  <% @interview.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+<% end %>
+<%= form_for @interview, :url => {:action => :create} do |i| %>
+
+  <div class="field">
+    <%= i.label :interview_datetime, "開始時間" %>
+    <%= i.datetime_select :interview_datetime %>
+  </div>
+
+  <div class="actions">
+    <%= i.submit "新規作成" %>
+  </div>
+<% end %>

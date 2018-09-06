@@ -5,6 +5,16 @@ ja:
         unselected: 未選択
         man: 男性
         woman: 女性
+    interview:
+      approval_status:
+        reserve: 保留
+        approval: 承認
+        disapproval: 拒否
+
+  activerecord:
+    attributes:
+      interview:
+        interview_datetime: 開始時間
 
   date:
     formats:
@@ -27,7 +37,7 @@ ja:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
       short: "%y/%m/%d %H:%M"
-      long: "%Y年%m月%d日(%a) %H時%M分%S秒 %Z"
+      long: "%Y年%m月%d日(%a) %H時%M分"
     am: "午前"
     pm: "午後"
 

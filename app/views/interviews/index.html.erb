@@ -1,0 +1,16 @@
+<table>
+　<tr align="left">
+　　<th>面接開始日時</th>
+　　<th>承認状態</th>
+　</tr>
+  <% @interviews.each do |i| %>
+  <tr align="left">
+    <td><%= l i.interview_datetime, format: :long %></td>
+    <td><%= Interview.approval_statuses_i18n[i.approval_status] %></td>
+    <td><%= link_to '編集', edit_user_interview_path(i.user_id, i.id) %></td>
+    <td><%= link_to '削除', user_interview_path(i.user_id, i.id), method: :delete,data: {confirm: '本当に削除しますか？' } %></td>
+  </tr>
+  <% end %>
+</table>
+
+<%= link_to '新規面接作成' , {controller: :interviews, action: :new} %>

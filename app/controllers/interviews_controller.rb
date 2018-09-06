@@ -1,6 +1,6 @@
 class InterviewsController < ApplicationController
   before_action :authenticate_user!
-  before_action :redirect_if_not_current_user, only: [:create, :update, :destroy]
+  before_action :redirect_if_not_current_user, only: [:create, :edit, :destroy]
   before_action :set_interview, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -29,6 +29,12 @@ class InterviewsController < ApplicationController
 
   def update
     if @interview.update(interview_param)
+      if @interview.approval_status == 'approval'
+        # 承認された面接以外の面接のapproval_statusをdisapproval(拒否)に設定
+        user_id = params[:user_id]
+        id = params[:id]
+        Interview.where(["user_id = ? and id != ?", user_id, id]).update_all(approval_status: 'disapproval')
+      end
       redirect_to user_interview_path(current_user, @interview), notice: "面接を更新しました。"
     else
       render 'edit'
@@ -47,7 +53,7 @@ class InterviewsController < ApplicationController
     end
 
     def interview_param
-      params.require(:interview).permit(:interview_datetime)
+      params.require(:interview).permit(:interview_datetime, :approval_status)
     end
 
     def redirect_if_not_current_user

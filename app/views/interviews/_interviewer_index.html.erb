@@ -12,7 +12,9 @@
   <% @interviews.each do |i| %>
   <tr align="left">
     <% unless interview_approved?(i) %>
-    <td><%= link_to((l i.interview_datetime, format: :long), '#') %></td>
+    <% date = l i.interview_datetime, format: :long %>
+    <td><%= button_to date, user_interview_path(i.user_id, i), params:{interview:{ approval_status: 'approval'}},
+    method: :patch, data: {confirm: "#{date}で面接を確定していいですか？"}  %></td>
     <% end %>
   </tr>
   <% end %>

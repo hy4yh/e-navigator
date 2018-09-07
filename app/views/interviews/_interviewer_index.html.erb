@@ -1,6 +1,6 @@
 <h2><%= @user.profile.name %>さんの面接一覧</h2>
 <h2>現在の面接日程</h2>
-<% if interview_datetime = get_interview_datetime %>
+<% if interview_datetime = set_interview_datetime %>
   <P><strong><%= interview_datetime %></strong>に面接が設定されています。</P>
 <% else %>
   <p><strong>現在面接は設定されていません。</strong></p>

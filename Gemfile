@@ -10,6 +10,7 @@ gem 'bootstrap'
 gem 'jquery-rails'
 gem 'popper_js'
 gem 'tether-rails'
+gem 'turbolinks'
 
 gem 'enum_help'
 #devise

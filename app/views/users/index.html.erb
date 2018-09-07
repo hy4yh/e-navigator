@@ -1,12 +1,15 @@
-<table>
-　<tr align="left">
-　　<th>名前</th>
-　　<th>Email</th>
-　　<th>年齢</th>
-　　<th>性別</th>
-　　<th>学校名</th>
-　　<th>面接日時</th>
-　</tr>
+<table class="table table-bordered table-hover">
+  <thead class="thead-light">
+    <tr align="left">
+　　  <th>名前</th>
+　　  <th>Email</th>
+　　  <th>年齢</th>
+　　  <th>性別</th>
+　　  <th>学校名</th>
+　　  <th>面接日時</th>
+     <th></th>
+    </tr>
+  </thead>
   <% @users.each do |user| %>
   <tr align="left">
     <td><%= user.profile.name %></td>

@@ -1,9 +1,5 @@
 <h1>新規面接作成</h1>
-<% if @interview.errors.any? %>
-  <% @interview.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-  <% end %>
-<% end %>
+<%= render 'error_message' %>
 <%= form_for @interview, :url => {:action => :create} do |i| %>
 
   <div class="field">

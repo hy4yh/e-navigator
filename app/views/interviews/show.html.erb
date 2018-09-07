@@ -3,4 +3,4 @@
   <p>承認状態:<%= Interview.approval_statuses_i18n[@interview.approval_status] %></p>
 </div>
 
-<%= link_to '面接一覧へ' , user_interviews_path(@interview.user_id) %>
+<%= button_to '面接一覧へ' , user_interviews_path(@interview.user_id), method: :get %>

@@ -19,7 +19,7 @@
       <%= l interview.interview_datetime, format: :long if interview_approved?(interview) %>
     <% end %>
     </td>
-    <td><%= link_to '面接一覧', user_interviews_path(user) %></td>
+    <td><%= button_to '面接一覧', user_interviews_path(user), method: :get %></td>
   </tr>
   <% end %>
 </table>

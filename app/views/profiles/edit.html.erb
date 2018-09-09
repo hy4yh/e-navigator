@@ -1,25 +1,28 @@
-<%= form_for @profile do |f| %>
-  <div class="form-group">
-    <%= f.label :name, "名前" %>
-    <%= f.text_field :name%>
-  </div>
+<h2>プロフィールページ</h2>
+<div class="mt-4">
+  <%= form_for @profile do |f| %>
+    <div class="form-group">
+      <%= f.label :name, "名前" %>
+      <%= f.text_field :name%>
+    </div>
 
-  <div class="form-group">
-    <%= f.label :birthday, "生年月日" %>
-    <%= f.date_select :birthday, user_month_numbers: true, start_year: 1988, end_year: 2000, include_blank: true %>
-  </div>
+    <div class="form-group">
+      <%= f.label :birthday, "生年月日" %>
+      <%= f.date_select :birthday, user_month_numbers: true, start_year: 1988, end_year: 2000, include_blank: true %>
+    </div>
 
-  <div class="form-group">
-    <%= f.label :gender, "性別" %>
-    <%= f.select :gender, Profile.genders_i18n.keys.map {|k| [Profile.genders_i18n[k], k]} %>
-  </div>
+    <div class="form-group">
+      <%= f.label :gender, "性別" %>
+      <%= f.select :gender, Profile.genders_i18n.keys.map {|k| [Profile.genders_i18n[k], k]} %>
+    </div>
 
-  <div class="form-group">
-    <%= f.label :school_name, "学校名" %>
-    <%= f.text_field :school_name%>
-  </div>
+    <div class="form-group">
+      <%= f.label :school_name, "学校名" %>
+      <%= f.text_field :school_name%>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "更新"%>
-  </div>
-<% end %>
+    <div class="actions">
+      <%= f.submit "更新"%>
+    </div>
+  <% end %>
+</div>

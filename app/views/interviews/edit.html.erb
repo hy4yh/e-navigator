@@ -1,13 +1,15 @@
-<h1>面接編集</h1>
-<%= render 'error_message' %>
-<%= form_for @interview, :url => {:action => :update} do |i| %>
+<h2>面接編集</h2>
+<div class="mt-4">
+  <%= render 'error_message' %>
+  <%= form_for @interview, :url => {:action => :update} do |i| %>
 
-  <div class="field">
-    <%= i.label :interview_datetime, "開始時間" %>
-    <%= i.datetime_select :interview_datetime %>
-  </div>
+    <div class="form-group">
+      <%= i.label :interview_datetime, "開始時間" %>
+      <%= i.datetime_select :interview_datetime %>
+    </div>
 
-  <div class="actions">
-    <%= i.submit "更新" %>
-  </div>
-<% end %>
+    <div class="actions">
+      <%= i.submit "更新" %>
+    </div>
+  <% end %>
+</div>

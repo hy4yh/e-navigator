@@ -29,7 +29,7 @@ class InterviewsController < ApplicationController
 
   def update
     if @interview.update(interview_param)
-      if @interview.approval_status == 'approval'
+      if @interview.approval?
         # 承認された面接以外のそのユーザーの面接のapproval_statusをdisapproval(拒否)に設定
         user_id = params[:user_id]
         id = params[:id]

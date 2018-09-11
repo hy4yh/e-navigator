@@ -9,11 +9,11 @@
 <table class="table table-borderless">
 　<tr align="left">
 　</tr>
-  <% @interviews.each do |i| %>
+  <% @interviews.each do |interview| %>
   <tr align="left">
-    <% unless i.approval? %>
-    <% date = l i.interview_datetime, format: :long %>
-    <td><%= button_to date, user_interview_path(i.user_id, i), params:{interview:{ approval_status: 'approval'}},
+    <% unless interview.approval? %>
+    <% date = l interview.interview_datetime, format: :long %>
+    <td><%= button_to date, user_interview_path(interview.user_id, interview), params:{interview:{ approval_status: 'approval'}},
     method: :patch, data: {confirm: "#{date}で面接を確定していいですか？"}  %></td>
     <% end %>
   </tr>

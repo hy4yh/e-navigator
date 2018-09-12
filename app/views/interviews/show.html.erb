@@ -1,6 +1,6 @@
 <div>
-  <p>面接開始時間:<%= l @interview.interview_datetime, format: :long%></p>
-  <p>承認状態:<%= Interview.approval_statuses_i18n[@interview.approval_status] %></p>
+  <p><strong>面接開始時間</strong>:<%= l @interview.interview_datetime, format: :long%></p>
+  <p><strong>承認状態</strong>:<%= Interview.approval_statuses_i18n[@interview.approval_status] %></p>
 </div>
 
-<%= link_to '面接一覧へ' , {controller: :interviews, action: :index} %>
+<%= button_to '面接一覧へ' , user_interviews_path(@interview.user_id), method: :get %>

@@ -1,0 +1,23 @@
+<h3><%= @user.profile.name %>さんの面接一覧</h3>
+<table class="table table-bordered table-hover">
+  <thead class="thead-light">
+    <tr align="left">
+　 　  <th>面接開始日時</th>
+　 　  <th>承認状態</th>
+      <th></th>
+      <th></th>
+　  </tr>
+  </thead>
+  <% @interviews.each do |interview| %>
+  <tr align="left">
+    <td><%= l interview.interview_datetime, format: :long %></td>
+    <td><%= Interview.approval_statuses_i18n[interview.approval_status] %></td>
+    <td><%= button_to '編集', edit_user_interview_path(interview.user_id, interview), method: :get,
+    disabled: !interview.reserve? %></td>
+    <td><%= button_to '削除', user_interview_path(interview.user_id, interview), method: :delete,
+    disabled: !interview.reserve?, data: {confirm: '本当に削除しますか？' } %></td>
+  </tr>
+  <% end %>
+</table>
+
+<%= button_to '新規面接作成' , new_user_interview_path(@user), method: :get %>

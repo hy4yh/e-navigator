@@ -1,0 +1,21 @@
+<h2><%= @user.profile.name %>さんの面接一覧</h2>
+<h2>現在の面接日程</h2>
+<% if interview_datetime = set_interview_datetime %>
+  <P><strong><%= interview_datetime %></strong>に面接が設定されています。</P>
+<% else %>
+  <p><strong>現在面接は設定されていません。</strong></p>
+<% end %>
+<P>面接日程を設定、変更する場合は以下から選択してください。</P>
+<table class="table table-borderless">
+　<tr align="left">
+　</tr>
+  <% @interviews.each do |interview| %>
+  <tr align="left">
+    <% unless interview.approval? %>
+    <% date = l interview.interview_datetime, format: :long %>
+    <td><%= button_to date, user_interview_path(interview.user_id, interview), params:{interview:{ approval_status: 'approval'}},
+    method: :patch, data: {confirm: "#{date}で面接を確定していいですか？"}  %></td>
+    <% end %>
+  </tr>
+  <% end %>
+</table>

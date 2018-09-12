@@ -3,21 +3,12 @@ class ProfilesController < ApplicationController
   before_action :redirect_if_not_current_user
   before_action :set_profile, only: [:edit, :update]
 
-  def create
-    params[:profile][:user_id] = current_user.id
-    @profile = Profile.create(create_profile)
-    render 'edit'
-  end
-
   def edit
-    unless @profile
-      @profile = Profile.new
-    end
   end
 
   def update
     @profile.update(profile_params)
-    render :edit
+    redirect_to edit_profile_path(current_user), notice: "プロフィールを更新しました。"
   end
 
   private

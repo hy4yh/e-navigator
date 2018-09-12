@@ -1,6 +1,8 @@
-<%= link_to "e-Navigator", root_path %>
-<% if user_signed_in?	%>
-  <%= link_to "プロフィール", edit_profiles_path(current_user.id) %>
-  <%= link_to "自分の面接一覧", user_interviews_path(current_user.id) %>
-  <%= link_to "ログアウト", destroy_user_session_path, :method => :delete %>
-<% end %>
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+  <%= link_to "e-Navigator", root_path, class: "navbar-brand" %>
+  <% if user_signed_in?	%>
+    <%= link_to "プロフィール", edit_profile_path(current_user.id), class: "nav-link" %>
+    <%= link_to "自分の面接一覧", user_interviews_path(current_user.id), class: "nav-link" %>
+    <%= link_to "ログアウト", destroy_user_session_path, class: "nav-link", :method => :delete %>
+  <% end %>
+</nav>

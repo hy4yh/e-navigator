@@ -1,0 +1,7 @@
+<% if @interview.errors.any? %>
+  <% @interview.errors.full_messages.each do |msg| %>
+    <div class="alert alert-danger">
+      <li><%= msg %></li>
+    </div>
+  <% end %>
+<% end %>

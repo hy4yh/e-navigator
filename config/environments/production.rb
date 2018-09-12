@@ -65,13 +65,16 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-      port: ENV['PORT'],
-      address: ENV['ADDRESS'],
-      domain: ENV['DOMAIN'],
-      user_name: ENV['USER_NAME'],
-      password: ENV['PASSWORD'],
-      enable_starttls_auto: true
+    port: 587,
+    address: 'smtp.gmail.com',
+    domain: 'gmail.com',
+    user_name: ENV['USER_NAME'],
+    password: ENV['PASSWORD'],
+    :authentication => :plain,
+    enable_starttls_auto: true
   }
+  host = 'e-navigator-hy4yh.herokuapp.com'
+  config.action_mailer.default_url_options = { host: host, protocol: 'https' }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).

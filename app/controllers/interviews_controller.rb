@@ -1,10 +1,11 @@
 class InterviewsController < ApplicationController
   before_action :authenticate_user!
   before_action :redirect_if_not_current_user, only: [:create, :edit, :destroy]
-  before_action :set_user, only: [:index, :update]
+  before_action :set_user, only: [:index, :update, :send_email]
   before_action :set_interview, only: [:show, :edit, :update, :destroy]
 
   def index
+    @users = User.where.not(id: params[:user_id])
     @interviews = @user.interviews.order(:interview_datetime)
   end
 
@@ -44,6 +45,11 @@ class InterviewsController < ApplicationController
   def destroy
     @interview.destroy
     redirect_to user_interviews_path, notice: "面接を削除しました。"
+  end
+
+  def send_email
+    # action_mailer(@user)
+    redirect_to user_interviews_path, notice: "申請が完了しました。"
   end
 
   private

@@ -20,4 +20,11 @@
   <% end %>
 </table>
 
+<div>
+  <%= form_tag(send_email_path(@user)) do %>
+    <%= select_tag :user_id, options_from_collection_for_select(@users, :id, :email) %>
+    <%= submit_tag '申請' %>
+  <% end %>
+</div>
+
 <%= button_to '新規面接作成' , new_user_interview_path(@user), method: :get %>

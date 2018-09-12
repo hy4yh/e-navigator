@@ -1,10 +1,10 @@
 class InterviewsController < ApplicationController
   before_action :authenticate_user!
   before_action :redirect_if_not_current_user, only: [:create, :edit, :destroy]
+  before_action :set_user, only: [:index, :update]
   before_action :set_interview, only: [:show, :edit, :update, :destroy]
 
   def index
-    @user = User.find(params[:user_id])
     @interviews = @user.interviews.order(:interview_datetime)
   end
 
@@ -31,9 +31,9 @@ class InterviewsController < ApplicationController
     if @interview.update(interview_param)
       if @interview.approval?
         # 承認された面接以外のそのユーザーの面接のapproval_statusをdisapproval(拒否)に設定
-        user_id = params[:user_id]
-        id = params[:id]
-        Interview.where(["user_id = ? and id != ?", user_id, id]).update_all(approval_status: 'disapproval')
+        @user.interviews.where.not(id: params[:id]).each do |interview|
+          interview.disapproval!
+        end
       end
       redirect_to user_interview_path(current_user, @interview), notice: "面接を更新しました。"
     else
@@ -47,6 +47,10 @@ class InterviewsController < ApplicationController
   end
 
   private
+
+    def set_user
+      @user = User.find(params[:user_id])
+    end
 
     def set_interview
       @interview = Interview.find(params[:id])

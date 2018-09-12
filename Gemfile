@@ -5,6 +5,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# .env から環境変数を読み込み
+gem 'dotenv-rails', require: 'dotenv/rails-now'
+
 #bootstrap
 gem 'bootstrap'
 gem 'jquery-rails'

@@ -1,13 +1,8 @@
 class NoticeMailer < ApplicationMailer
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.notice_mailer.sendmail_for_approving_interview.subject
-  #
-  def sendmail_for_approving_interview
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
+  def sendmail_for_approving_interview(user,interviewer)
+    @user = user
+    mail to: interviewer.email,
+         subject: '面接希望日が決まりました。'
   end
 end

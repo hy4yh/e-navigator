@@ -22,7 +22,7 @@
 
 <div>
   <%= form_tag(send_email_path(@user)) do %>
-    <%= select_tag :user_id, options_from_collection_for_select(@users, :id, :email) %>
+    <%= select_tag :receiver_user_id, options_from_collection_for_select(@users, :id, :email) %>
     <%= submit_tag '申請' %>
   <% end %>
 </div>

@@ -48,7 +48,8 @@ class InterviewsController < ApplicationController
   end
 
   def send_email
-    # action_mailer(@user)
+    interviewer = User.find(params[:receiver_user_id])
+    NoticeMailer.sendmail_for_approving_interview(@user, interviewer).deliver_now
     redirect_to user_interviews_path, notice: "申請が完了しました。"
   end
 

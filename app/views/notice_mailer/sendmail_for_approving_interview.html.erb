@@ -1,5 +1,5 @@
-<h1>Notice#sendmail_for_approving_interview</h1>
+<%= @user.profile.name %> さんの面接希望日が決まりました。<br>
 
-<p>
-  <%= @greeting %>, find me in app/views/notice_mailer/sendmail_for_approving_interview.html.erb
-</p>
+以下の URL から、面接日時の承認をよろしくお願いします。<br>
+
+<%= user_interviews_url(@user) %>

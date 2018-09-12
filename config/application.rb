@@ -16,7 +16,9 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-Dotenv::Railtie.load
+unless Rails.env.production?
+  Dotenv::Railtie.load
+end
 
 module ENavigator
   class Application < Rails::Application

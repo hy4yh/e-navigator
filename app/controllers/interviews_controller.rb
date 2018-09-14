@@ -1,7 +1,7 @@
 class InterviewsController < ApplicationController
   before_action :authenticate_user!
   before_action :redirect_if_not_current_user, only: [:create, :edit, :destroy]
-  before_action :set_user, only: [:index, :update, :send_email]
+  before_action :set_user, only: [:index, :update, :apply_for_interview]
   before_action :set_interview, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -47,9 +47,9 @@ class InterviewsController < ApplicationController
     redirect_to user_interviews_path, notice: "面接を削除しました。"
   end
 
-  def send_email
-    interviewer = User.find(params[:receiver_user_id])
-    NoticeMailer.sendmail_for_approving_interview(@user, interviewer).deliver_now
+  def apply_for_interview
+    interviewer_email = params[:interviewer_email]
+    NoticeMailer.sendmail_for_approving_interview(@user, interviewer_email).deliver_now
     redirect_to user_interviews_path, notice: "申請が完了しました。"
   end
 

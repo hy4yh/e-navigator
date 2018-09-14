@@ -21,8 +21,8 @@
 </table>
 
 <div>
-  <%= form_tag(send_email_path(@user)) do %>
-    <%= select_tag :receiver_user_id, options_from_collection_for_select(@users, :id, :email) %>
+  <%= form_tag(apply_for_interview_path(@user)) do %>
+    <%= select_tag :interviewer_email, options_from_collection_for_select(@users, :email, :email) %>
     <%= submit_tag '申請' %>
   <% end %>
 </div>

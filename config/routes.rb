@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :interviews
   end
 
-  post '/users/:user_id/interviews/send', to: 'interviews#send_email', as: 'send_email'
+  post '/users/:user_id/interviews/apply', to: 'interviews#apply_for_interview', as: 'apply_for_interview'
 
   devise_for :users
 

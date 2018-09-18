@@ -2,10 +2,12 @@ Rails.application.routes.draw do
   root to: 'users#index'
 
   resources :users, only: [] do
-    resources :interviews
+    resources :interviews do
+      collection do
+        post :apply
+      end
+    end
   end
-
-  post '/users/:user_id/interviews/apply', to: 'interviews#apply_for_interview', as: 'apply_for_interview'
 
   devise_for :users
 

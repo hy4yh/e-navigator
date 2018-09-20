@@ -1,7 +1,6 @@
-<%= @interviewee.profile.name %> さんの面接時間が <%= @interviewer.profile.name %> さんによって、以下の内容で、承認されました。<br>
-<% @interviewee_interviews.each do |interview| %>
-  <%= "日程:#{l interview.interview_datetime, format: :long}" if interview.approval? %><br>
-<% end %>
+<%= @approved_interview.user.profile.name %> さんの面接時間が <%= @interviewer.profile.name %> さんによって、以下の内容で、承認されました。<br>
+
+<%= "日程:#{l @approved_interview.interview_datetime, format: :long}" %><br>
 
 場所は、株式会社フィードフォースで行います。<br>
 今後の連絡は担当人事の方から再度連絡させていただきます。<br>

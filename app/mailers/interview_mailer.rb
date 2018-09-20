@@ -6,11 +6,10 @@ class InterviewMailer < ApplicationMailer
          subject: '面接希望日が決まりました。'
   end
 
-  def decide(interviewee, interviewer)
-    @interviewee = interviewee
-    @interviewee_interviews = interviewee.interviews
+  def decide(approved_interview, interviewer)
+    @approved_interview = approved_interview
     @interviewer = interviewer
-    mail to: [@interviewee.email, @interviewer.email],
+    mail to: [@approved_interview.user.email, @interviewer.email],
          subject: '面接日時が確定しました。'
   end
 end

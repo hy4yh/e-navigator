@@ -33,7 +33,7 @@ class InterviewsController < ApplicationController
       if @interview.approval?
         # 承認された面接以外のそのユーザーの面接のapproval_statusをdisapproval(拒否)に設定
         @user.interviews.where.not(id: params[:id]).each do |interview|
-          interview.disapproval!
+          interview.update_attribute(:approval_status, :disapproval)
         end
       end
       redirect_to user_interview_path(current_user, @interview), notice: "面接を更新しました。"

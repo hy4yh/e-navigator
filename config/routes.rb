@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   root to: 'users#index'
 
   resources :users, only: [] do
-    resources :interviews
+    resources :interviews do
+      collection do
+        post :apply
+      end
+    end
   end
 
   devise_for :users

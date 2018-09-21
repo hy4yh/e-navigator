@@ -35,6 +35,7 @@ class InterviewsController < ApplicationController
         @user.interviews.where.not(id: params[:id]).each do |interview|
           interview.update_attribute(:approval_status, :disapproval)
         end
+        InterviewMailer.decide(@interview, current_user).deliver_now
       end
       redirect_to user_interview_path(current_user, @interview), notice: "面接を更新しました。"
     else

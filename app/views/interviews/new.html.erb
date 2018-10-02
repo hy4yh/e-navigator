@@ -1,15 +1,2 @@
 <h2>新規面接作成</h2>
-<div class="mt-4">
-  <%= render 'error_message' %>
-  <%= form_for @interview, :url => {:action => :create} do |i| %>
-
-    <div class="form-group">
-      <%= i.label :interview_datetime, "開始時間" %>
-      <%= i.datetime_select :interview_datetime %>
-    </div>
-
-    <div class="actions">
-      <%= i.submit "新規作成" %>
-    </div>
-  <% end %>
-</div>
+<%= render 'form' %>

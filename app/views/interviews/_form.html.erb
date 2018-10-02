@@ -1,0 +1,14 @@
+<div class="mt-4">
+  <%= render 'error_message' %>
+  <%= form_for [@interview.user, @interview] do |f| %>
+
+    <div class="form-group">
+      <%= f.label :interview_datetime, "開始時間" %>
+      <%= f.datetime_select :interview_datetime %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>

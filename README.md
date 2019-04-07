@@ -1,34 +1,8 @@
-# e-Navigator で作って欲しいアプリケーションの説明
-
-## セットアップ
-
-### 事前にインストールしておいて欲しいもの
-以下は事前にインストールしてあるものとします。
-これらのインストールに関しては基本的に質問を受け付けません。
-
-- ruby (version 2.5.1)
-- Bundler
-- PostgreSQL
-
-### セットアップの手順
-
-セットアップの手順は以下の通りです。
-ここからの部分で分からないことがあれば、気軽に質問してください！
-
-Github上でforkして、これから作るRailsアプリケーションの雛形をコピーします。
-画面の右上にあるforkボタンを押すことで、自分のアカウントにこのアプリケーションをコピーしてくることができます。
-
-![fork_button](https://github.com/feedforce/e-navigator/wiki/images/fork_button.jpg)
-
-forkしたらローカルにcloneしておいてください。
-
-次に、`$ bin/setup`を実行します。
-
-最後に、`$ bundle exec rails s`してから、`http://localhost:3000`にアクセスしてください。
-
-いつもの画面が表示されればセットアップは完了です。
-
-![youre_on_rails](https://github.com/feedforce/e-navigator/wiki/images/youre_on_rails.png)
+# e-Navigator
+## e-Navigatorとは
+与えられた仕様を元にコードレビューをして頂きながら、面談日程を調整するアプリケーションを開発するサービスです。<br>
+株式会社フィードフォースさんが提供しています。<br>
+下記の仕様、流れにしたがってアプリを作成しました。
 
 ## 作って欲しいもの
 
